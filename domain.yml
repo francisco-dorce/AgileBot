@@ -1,0 +1,52 @@
+version: "3.1"
+
+intents:
+  - saludar
+  - despedirse
+  - afirmacion
+  - negacion
+  - dar_nombre
+  - solicitar_certificado_empadronamiento
+
+responses:
+  utter_saludar:
+    - text: "¡Hola! Para poder continuar necesito saber tu nombre."
+
+  utter_despedirse:
+    - text: "¡Hasta la próxima!"
+    - text: "Adiós."
+
+  utter_mas_ayuda:
+    - text: ¿Necesitas algo más?
+
+  utter_despedida:
+    - text: "Gracias (nombre). Un placer haber podido ayudarte. Hasta la próxima."
+
+actions:
+  - action_saludar_y_ayuda
+  - action_proporcionar_documento
+
+entities:
+  - nombre
+  - documento
+
+slots:
+  nombre:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: nombre
+      intent: dar_nombre
+
+  documento:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: documento
+      intent: solicitar_certificado_empadronamiento
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

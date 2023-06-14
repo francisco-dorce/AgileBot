@@ -1,0 +1,37 @@
+version: "3.1"
+
+stories:
+
+- story:  saludo y recogida de nombre
+  steps:
+    - intent: saludar
+    - action: utter_saludar
+    - intent: dar_nombre
+      entities:
+      - nombre: Ana
+    - slot_was_set:
+      - nombre: Ana 
+    - action: action_saludar_y_ayuda
+
+- story:  certificado de empadronamiento y FINALIZAR
+  steps:
+    - intent: solicitar_certificado_empadronamiento
+      entities:
+        - documento:  certificado_empadronamiento
+    - slot_was_set:
+      - documento:  certificado_empadronamiento
+    - action: action_proporcionar_documento
+    - action: utter_mas_ayuda
+    - intent: negacion
+    - action: utter_despedirse
+
+- story:  certificado de empadronamiento y CONTINUAR
+  steps:
+    - intent: solicitar_certificado_empadronamiento
+      entities:
+        - documento:  certificado_empadronamiento
+    - slot_was_set:
+      - documento:  certificado_empadronamiento
+    - action: action_proporcionar_documento
+    - action: utter_mas_ayuda
+    - intent: afirmacion

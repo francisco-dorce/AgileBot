@@ -1,0 +1,48 @@
+version: "3.1"
+
+nlu:
+- intent: saludar
+  examples: |
+    - hola
+    - buenas
+    - buenos días
+    - buenas tardes
+    - buenas noches
+  
+- intent: despedirse
+  examples: |
+    - adiós
+    - hasta luego
+    - hasta la próxima
+    - hasta pronto
+    - nos vemos
+
+- intent: afirmacion
+  examples: |
+    - sí
+    - sí, por favor
+    - sí, gracias
+
+- intent: negacion
+  examples: |
+    - no
+    - no, gracias    
+
+- intent: dar_nombre
+  examples: |
+    - mi nombre es [Arturo](nombre)
+    - me llaman [Ana](nombre)
+    - me llamo [Sofía](nombre)
+    - soy [Antonio](nombre)
+    - [Marta](nombre)
+
+- intent: solicitar_certificado_empadronamiento
+  examples: |
+    - quiero un certificado de [empadronamiento](documento)
+    - necesito un certificado del [empadronamiento](documento)
+    - obtener un certificado de [empadronamiento](documento)
+    - certificado de [empadronamiento](documento)
+
+- synonym:  empadronamiento
+  examples: |
+    - padrón
